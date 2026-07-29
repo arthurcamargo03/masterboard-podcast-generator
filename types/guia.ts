@@ -39,6 +39,10 @@ export interface BlocoGerado {
 
 export interface GuiaGerado {
   blocos: BlocoGerado[];
+  // De onde veio esse guia — a UI usa isso pra avisar quando caiu em mock
+  // (sem key, erro, timeout, JSON malformado) mesmo tendo pedido "ia".
+  fonte: "mock" | "ia";
+  aviso?: string;
 }
 
 // --- Input do formulário gerador ---
