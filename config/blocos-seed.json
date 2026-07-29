@@ -1,0 +1,42 @@
+{
+  "regras_globais": [
+    "Uma pergunta por vez, nunca composta.",
+    "Máximo ~15 palavras por pergunta.",
+    "Sem preâmbulo educado nem anúncio de transição.",
+    "Toda pergunta principal vem com puxadas condicionais."
+  ],
+  "tons": {
+    "descontraido": { "rotulo": "Descontraído (tipo Flow)", "registro": "Informal, gíria ok, pode interromper, frases curtas." },
+    "executivo":    { "rotulo": "Executivo/contido",       "registro": "Profissional, sem gíria, ritmo pausado." }
+  },
+  "blocos": [
+    {
+      "id": "abertura", "titulo": "Abertura", "ordem": 1,
+      "intencao": "Baixar a guarda. Pergunta fácil sobre a pessoa, não sobre a tese.",
+      "guia_de_conducao": "Não é a pergunta mais importante; é a que faz o convidado relaxar.",
+      "puxadas": ["Se responder curto, pede detalhe: 'como foi isso na prática?'"],
+      "exemplos_semente": ["Como você caiu nesse mercado, lá no começo?"]
+    },
+    {
+      "id": "aprofundar", "titulo": "Aprofundar", "ordem": 2,
+      "intencao": "Tirar história e exemplo concreto, nunca opinião genérica.",
+      "guia_de_conducao": "Ancora tudo num momento específico. Se vier abstrato, puxa o exemplo.",
+      "puxadas": ["Se generalizar: 'me conta uma vez que isso aconteceu.'", "Se abrir história: 'e o que rolou depois?'"],
+      "exemplos_semente": ["Qual foi a vez que você achou que não ia dar certo?"]
+    },
+    {
+      "id": "contraponto", "titulo": "Contraponto", "ordem": 3,
+      "intencao": "Tensão produtiva. Trazer a objeção do público sem hostilidade.",
+      "guia_de_conducao": "Desafia o convidado sem arrogância; atribui a crítica a 'tem gente que pensa X'.",
+      "puxadas": ["Se ficar na defensiva: 'não tô te acusando, tô só passando o que o público pensa.'"],
+      "exemplos_semente": ["Tem gente que ouve isso e acha que foi sorte, não método. O que você diz?"]
+    },
+    {
+      "id": "fechamento", "titulo": "Fechamento", "ordem": 4,
+      "intencao": "Síntese e legado. A lição e o conselho pro ouvinte.",
+      "guia_de_conducao": "Fecha com algo prático que o ouvinte leva pra casa. Gancho suave, sem CTA forçado.",
+      "puxadas": ["Se der resposta clichê: 'fala isso pra alguém que tá começando agora, o que muda?'"],
+      "exemplos_semente": ["Se você pudesse mandar um recado pro você de 5 anos atrás, qual seria?"]
+    }
+  ]
+}
