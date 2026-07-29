@@ -77,7 +77,9 @@ export async function POST(request: Request): Promise<Response> {
     const textoBruto = await chamarIA(prompt);
     const guia: GuiaGerado = parseRespostaIA(textoBruto, config);
     return Response.json(guia);
-  } catch {
+  } catch (erro) {
+    // Log server-side pra diagnóstico; usuário só vê o aviso genérico abaixo.
+    console.error("Falha ao gerar guia com IA:", erro);
     const guia = gerarMock(config);
     guia.aviso = "Não deu pra gerar com a IA agora (fora do ar, timeout ou formato inesperado) — exibindo exemplo mock.";
     return Response.json(guia);

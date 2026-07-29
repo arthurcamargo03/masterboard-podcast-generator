@@ -28,6 +28,10 @@ export async function chamarIA(prompt: string): Promise<string> {
       body: JSON.stringify({
         model: modelo,
         max_tokens: 2048,
+        // Tarefa é geração de JSON estruturado, não raciocínio — desliga o
+        // thinking adaptativo (ligado por padrão no Sonnet 5) pra resposta
+        // mais rápida e barata.
+        thinking: { type: "disabled" },
         messages: [{ role: "user", content: prompt }],
       }),
       signal: controller.signal,
@@ -38,11 +42,15 @@ export async function chamarIA(prompt: string): Promise<string> {
     }
 
     const dados = await resposta.json();
-    const texto: string | undefined = dados?.content?.[0]?.text;
-    if (!texto) {
+    // DECISÃO: Sonnet 5 roda com thinking adaptativo ligado por padrão, então
+    // o bloco de texto pode não ser o content[0] (o primeiro pode ser "thinking").
+    // Por isso procura o bloco certo em vez de indexar direto.
+    type Bloco = { type: string; text?: string };
+    const blocoTexto = (dados?.content as Bloco[] | undefined)?.find((b) => b.type === "text");
+    if (!blocoTexto?.text) {
       throw new Error("Resposta da IA sem conteúdo de texto.");
     }
-    return texto;
+    return blocoTexto.text;
   } finally {
     clearTimeout(timeout);
   }
